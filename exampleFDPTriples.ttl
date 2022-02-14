@@ -1,0 +1,92 @@
+#metadata schemas for different digital objects in a FAIR data point, description must be in RDF (ttl and json-ld) and accompanied by shacl schemas
+
+#example of Metadata Service metadata triples - as defined by FDP specifications
+<https://clinicaldatascience.nl/fdp> a fdp-o:FairDataPoint;                                             #required - iri - of type r3d:repository. The value MUST be fdp-o:MetadataService.
+  dct:title "example FAIR Data Point"@en;                                                               #required - string - name of the repository with language tag
+  dct:hasVersion "1.0";                                                                                 #required - string - version of the repository
+  dct:description "This FDP deployment is used for epnd by the cds group of the UM"@en;                 #optional - string - Description of the repository with the language tag
+  dct:publisher <https://clinicaldatascience.nl>;                                                       #required - iri - Organisation(s) responsible for the repository
+  dct:language lang:en;                                                                                 #optional - iri - language
+  dct:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd4.0>;                                #optional - iri - license
+  dct:conformsTo <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/metadataShex>;                     #optional - iri - The specification of the repository metadata schema (for example ShEx)
+  dct:rights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/metadataRights>;                       #optional - iri - rights
+  dct:references <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/metadataRights>;                   #optional - iri - references  to documentation (API or otherwise).
+  dct:accessRights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/metadataRights>;                 #optional - iri - WebAccessControl Vocabulary description to describe the access restriction of a resource
+  fdp:metadataIdentifier <https://clinicaldatascience.nl/fdp>;                                          #required - iri - Identifier of the metadata entry. 
+  fdp:metadataIssued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;           #required - iri - Created date of the metadata entry
+  fdp:metadataModified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;         #required - iri - Last modified date of the metadata entry
+  r3d:institution <https://clinicaldatascience.nl>;                                                     #optional - iri - institution
+  r3d:startDate "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                #optional - DateTime - Release date of the repository
+  r3d:lastUpdate "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;               #optional - DateTime - Last update timestamp of the repository
+  r3d:dataCatalog <https://clinicaldatascience.nl/fdp/clinicalData>;                                    #required - iri - List of catalog metadata URLs
+  r3d:country <http://lexvo.org/id/iso3166/NL>;                                                         #optional - iri - country
+  r3d:repositoryIdentifier <http://136.243.4.200:8087/fdp#repositoryID>;                                #required - iri - Identifier of the repository.
+  rdfs:label "example FDP of cds group"@en.                                                             #optional - string - Name of the repository with the language tag
+
+
+#example Catalog metadata - as defined by fdp specifications
+<https://clinicaldatascience.nl/fdp/catalog/> a dcat:Catalog;                                           #required - iri - Required to be of type dcat:Catalog
+  dct:title "EPND Catalogs"@en;                                                                         #required - string - Name of the catalog with the language tag
+  dct:hasVersion "1.0";                                                                                 #required - string - Version of the catalog
+  dct:publisher <https://clinicaldatascience.nl>;                                                       #required - iri - Organisation(s) or Persons(s) responsible for the catalog
+  dct:description "Catalog for EPND datasets"@en;                                                       #optional - string - Description of the catalog with the language tag
+  dct:language lang:en;                                                                                 #optional - iri - language
+  dct:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd4.0>;                                #optional - iri - license
+  dct:issued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                   #optional - DateTime - Created date of the catalog entry
+  dct:modified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                 #optional - DateTime - Last modified date of the catalog entry
+  dct:conformsTo <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/catalogShex>;                      #optional - iri - The specification of the catalog  metadata schema (for example ShEx)
+  dct:rights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/metadataRights>;                       #optional - iri - rights
+  dct:accessRights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/metadataRights>;                 #optional - iri - WebAccessControl Vocabulary description to describe the access restriction of a resource
+  dct:isPartOf <https://clinicaldatascience.nl/fdp>;                                                    #required - iri - Relation to the parent metadata.
+  fdp:metadataIdentifier <https://clinicaldatascience.nl/fdp>;                                          #required - iri - Identifier of the metadata entry. 
+  fdp:metadataIssued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;           #required - iri - Created date of the metadata entry
+  fdp:metadataModified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;         #required - iri - Last modified date of the metadata entry
+  foaf:homepage <https://clinicaldatascience.nl/fdp/catalog/>;                                          #optional - iri - homepage
+  dcat:dataset <https://clinicaldatascience.nl/fdp/catalog/epnd/mockdata>;                              #required - iri - List of dataset URLs
+  dcat:themeTaxonomy <https://dbpedia.org/page/Alzheimer%27s_disease>;                                  #required - iri - List of taxonomy URLs
+  rdfs:label "example epnd catalog of cds group"@en.                                                    #optional - string - Name of the repository with the language tag
+
+
+#example Dataset metadata - NOT defined by fdp but by dcat
+<https://clinicaldatascience.nl/fdp/catalog/epnd/mockdata> a dcat:Dataset;                              #required - iri - Required to be of type dcat:Dataset
+  dct:title "MockData 1"@en ;                                                                           #required - string - Name of the dataset with the language tag
+  dct:publisher <http://orcid.org/0000-0003-3602-1885>;                                                 #required - iri - Organisation(s) or Persons(s) responsible for the dataset
+  dct:hasVersion "1.0" ;                                                                                #required - string - Version of the catalog
+  dct:description "epnd mockdataset"@en ;                                                               #optional - string - Description of the catalog with the language tag
+  dct:conformsTo <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/datasetShex>;                      #optional - iri - The specification of the dataset metadata schema (for example ShEx)
+  dct:issued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                   #optional - DateTime - Created date of the dataset entry
+  dct:modified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                 #optional - DateTime - Last modified date of the dataset entry
+  dct:language lang:en;                                                                                 #optional - iri - language
+  dct:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd4.0>;                                #optional - iri - license
+  dct:rights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/datasetRights>;                        #optional - iri - rights
+  dct:accessRights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/datasetRights>;                  #optional - iri - WebAccessControl Vocabulary description to describe the access restriction of a resource
+  dct:isPartOf <https://clinicaldatascience.nl/fdp>;                                                    #required - iri - Relation to the parent metadata.
+  fdp:metadataIdentifier <https://clinicaldatascience.nl/fdp>;                                          #required - iri - Identifier of the metadata entry. 
+  fdp:metadataIssued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;           #required - iri - Created date of the metadata entry
+  fdp:metadataModified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;         #required - iri - Last modified date of the metadata entry
+  dcat:distribution <https://gitlab.com/UM-CDS//data-harmonization-1/dataset.csv>;                      #required - iri - List of distribution URLs
+  dcat:theme <http://dbpedia.org/resource/Mutation>, <http://dbpedia.org/resource/Homo_sapiens>;        #required - iri - List of concepts that describe the dataset
+  dcat:contactPoint <https://clinicaldatascience.nl/fdp/contact>;                                       #optional - iri - contact information
+  dcat:keyword "alzheimer" , "clinical data", "Maastricht Study", "human";                              #optional - string - Keyword(s) related to the dataset with the language tag
+  dcat:landingPage <http://www.epnd.org/>;                                                              #optional - iri - Home page of the dataset
+  rdfs:label "Alzheimer Mock data set"@en.                                                              #optional - string - Name of the dataset with the language tag
+
+#example dataset distribution - NOT defined by fdp but by dcat
+<https://clinicaldatascience.nl/fdp/catalog/epnd/distribution> a dcat:Distribution;                     #required - iri - Required to be of type dcat:Distribution
+  dct:title "distribution mockdata 1"@en ;                                                              #required - string - Name of the data distribution with the language tag
+  dct:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd4.0>;                                #required - iri - license
+  dct:hasVersion "1.0" ;                                                                                #required - string - Version of the catalog
+  dct:isPartOf <https://clinicaldatascience.nl/fdp>;                                                    #required - iri - Relation to the parent metadata.
+  dct:issued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                   #optional - DateTime - Created date of the catalog entry
+  dct:modified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;                 #optional - DateTime - Last modified date of the distribution entry
+  dct:rights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/datasetRights>;                        #optional - iri - rights
+  dct:description "epnd mockdataset"@en ;                                                               #optional - string - Description of the distribution with the language tag
+  dct:conformsTo <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/distributionShex>;                 #optional - iri - The specification of the data distribution metadata schema (for example ShEx)
+  dct:accessRights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/datasetRights>;                  #optional - iri - WebAccessControl Vocabulary description to describe the access restriction of a resource
+  fdp:metadataIdentifier <https://clinicaldatascience.nl/fdp>;                                          #required - iri - Identifier of the metadata entry. 
+  fdp:metadataIssued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;           #required - iri - Created date of the metadata entry
+  fdp:metadataModified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;         #required - iri - Last modified date of the metadata entry
+  dcat:AccessURL  <https://gitlab.com/UM-CDS//data-harmonization-1/access>;                             #required - iri - A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset
+  dcat:downloadURL <https://gitlab.com/UM-CDS//data-harmonization-1/dataset.csv>;                       #required - iri - A file that contains the distribution of the dataset in a given format
+  dcat:mediaType "comma separated file"@en;                                                             #required - string - The media type of the distribution
+  dcat:byteSize 219596.8 .                                                                              #optional - demical - size of the file in bytes    
