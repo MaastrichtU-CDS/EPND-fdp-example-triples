@@ -83,8 +83,8 @@
   dct:description "epnd mockdataset"@en ;                                                               #optional - string - Description of the distribution with the language tag
   dct:conformsTo <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/distributionShex>;                 #optional - iri - The specification of the data distribution metadata schema (for example ShEx)
   dct:accessRights <https://github.com/orgs/MaastrichtU-CDS/teams/epnd/datasetRights>;                  #optional - iri - WebAccessControl Vocabulary description to describe the access restriction of a resource
-  fdp:metadataIdentifier <https://clinicaldatascience.nl/fdp>;                                          #required - iri - Identifier of the metadata entry. 
-  fdp:metadataIssued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;           #required - iri - Created date of the metadata entry
+  fdp:metadataIdentifier <https://clinicaldatascience.nl/fdp>;                                          #required - DateTime - Identifier of the metadata entry. 
+  fdp:metadataIssued "2020-05-29T09:55:08.580Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;           #required - DateTime - Created date of the metadata entry
   fdp:metadataModified "2020-09-30T11:17:43.008Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;         #required - iri - Last modified date of the metadata entry
   dcat:AccessURL  <https://gitlab.com/UM-CDS//data-harmonization-1/access>;                             #required - iri - A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset
   dcat:downloadURL <https://gitlab.com/UM-CDS//data-harmonization-1/dataset.csv>;                       #required - iri - A file that contains the distribution of the dataset in a given format
